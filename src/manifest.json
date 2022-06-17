@@ -1,0 +1,46 @@
+{
+	"name": "hyperupcall",
+	"description": "hyperupcall's Browser Extension",
+	"version": "1.0",
+	"manifest_version": 2,
+	"background": {
+		"scripts": ["./background2.js"]
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"*://arxiv.org/*pdf*",
+				"*://arxiv.org/abs/*",
+				"*://export.arxiv.org/*pdf*",
+				"*://export.arxiv.org/abs/*"
+			],
+			"js": ["content_arxiv_utils.js"],
+			"run_at": "document_end"
+		}
+	],
+	"permissions": [
+		"storage",
+		"nativeMessaging",
+		"tabs",
+		"activeTab",
+		"storage",
+		"*://export.arxiv.org/*",
+		"*://arxiv.org/*"
+	],
+	"browser_action": {
+		"default_popup": "./popup.html",
+		"default_icon": {
+			"16": "./images/redpanda-16.png",
+			"32": "./images/redpanda-32.png",
+			"48": "./images/redpanda-48.png",
+			"128": "./images/redpanda-128.png"
+		}
+	},
+	"icons": {
+		"16": "./images/redpanda-16.png",
+		"32": "./images/redpanda-32.png",
+		"48": "./images/redpanda-48.png",
+		"128": "./images/redpanda-128.png"
+	},
+	"options_page": "options.html"
+}
