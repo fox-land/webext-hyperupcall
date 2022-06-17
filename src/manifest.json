@@ -8,8 +8,14 @@
 	"background": {
 		"scripts": [
 			"./background2.js",
+			// old-reddit-redirect
 			"old-reddit-redirect/js/background.js",
-			"stackoverflow-poweruser/js/background.js"
+			// stackoverflow-poweruser
+			"stackoverflow-poweruser/js/background.js",
+			// github-repo-size
+			"github-repo-size/js/background.js",
+			// github-user-languages
+			"github-user-languages/js/background.js"
 		]
 	},
 	"content_scripts": [
@@ -70,13 +76,26 @@
 			"matches": ["https://github.com/*", "https://gitlab.com/*", "https://bitbucket.org/*"],
 			"js": ["git-history/js/background.js"],
 			"run_at": "document_end"
+		},
+		// github-repo-size
+		{
+			"matches": ["https://github.com/*"],
+			"js": ["github-repo-size/js/inject.js"],
+			"run_at": "document_end"
+		},
+		// github-user-languages
+		{
+			"js": ["github-user-languages/js/vendor.js", "github-user-languages/js/content_script.js"],
+			"matches": ["https://github.com/*"]
 		}
 	],
 	"web_accessible_resources": [
 		// papers-with-video
 		"data/mapping.json",
 		// stackoverflow power user
-		"images/icons/*"
+		"images/icons/*",
+		// github-user-languages
+		"github/user-languages/data/colors.json"
 	],
 	"permissions": [
 		// shared
@@ -95,10 +114,13 @@
 		"*://www.reddit.com/*",
 		"*://np.reddit.com/*",
 		"*://amp.reddit.com/*",
-		"*://i.reddit.com/*"
+		"*://i.reddit.com/*",
+		// github-user-languages
+		"https://api.github.com/"
 	],
 	"browser_action": {
-		"default_popup": "./pages/popup.html",
+		// "default_popup": "./pages/popup.html",
+		"default_popup": "github-user-languages/pages/popup.html",
 		"default_icon": {
 			"16": "./images/redpanda-16.png",
 			"32": "./images/redpanda-32.png",
