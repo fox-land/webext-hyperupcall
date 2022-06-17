@@ -1,20 +1,20 @@
 {
-  "name": "webext-hyperupcall",
-  "version": "0.0.0",
-  "description": "<%= description %>",
-  "license": "MIT",
-  "repository": "https://github.com/<%= githubUsername %>/<%= kebabTitle %>",
-  "author": {
-    "name": "Edwin Kofler",
-    "email": "edwin@kofler.dev",
-    "url": "https://edwinkofler.com"
-  },
-  "dependencies": {
-    "webextension-polyfill": "^0.4.0"
-  },
-  "devDependencies": {
-    "stylelint": "^14.8.5",
-    "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-scss": "^3.4.4"
-  }
+	"name": "webext-hyperupcall",
+	"version": "0.0.0",
+	"description": "hyperupcall's Extension",
+	"license": "Multiple",
+	"repository": "https://github.com/hyperupcall/webext-hyperupcall",
+	"author": {
+		"name": "Edwin Kofler",
+		"email": "edwin@kofler.dev",
+		"url": "https://edwinkofler.com"
+	},
+	"dependencies": {
+		"webextension-polyfill": "^0.4.0"
+	},
+	"devDependencies": {
+		"stylelint": "^14.8.5",
+		"stylelint-config-rational-order": "^0.1.2",
+		"stylelint-scss": "^3.4.4"
+	}
 }
