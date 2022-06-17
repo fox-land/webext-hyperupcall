@@ -13,3 +13,5 @@ Many of my extensions seldom required updates. They were also cluttering up the 
 - [StackOverflowPowerUser](https://github.com/AnthoPakPak/StackOverflowPowerUser) by AnthoPakPak (GPL-3.0)
 - [git-history-browser-extension](https://github.com/LuisReinoso/git-history-browser-extension) by LuisReinoso (MIT)
 - [github-repo-size](https://github.com/harshjv/github-repo-size) by harshjv (MIT)
+- [github-user-languages](https://github.com/freyamade/github-user-languages) by freyamade (MIT)
+- [arxiv-vanity-chrome-extension](https://github.com/arxiv-vanity/arxiv-vanity-chrome-extension) by arxiv-vanity (?)

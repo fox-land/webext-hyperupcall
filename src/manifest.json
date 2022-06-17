@@ -15,7 +15,9 @@
 			// github-repo-size
 			"github-repo-size/js/background.js",
 			// github-user-languages
-			"github-user-languages/js/background.js"
+			"github-user-languages/js/background.js",
+			// arxiv-vanity
+			"arxiv-vanity/js/background.js"
 		]
 	},
 	"content_scripts": [
@@ -73,7 +75,11 @@
 		},
 		// git-history-browser-extension
 		{
-			"matches": ["https://github.com/*", "https://gitlab.com/*", "https://bitbucket.org/*"],
+			"matches": [
+				"https://github.com/*",
+				"https://gitlab.com/*",
+				"https://bitbucket.org/*"
+			],
 			"js": ["git-history/js/background.js"],
 			"run_at": "document_end"
 		},
@@ -85,8 +91,16 @@
 		},
 		// github-user-languages
 		{
-			"js": ["github-user-languages/js/vendor.js", "github-user-languages/js/content_script.js"],
+			"js": [
+				"github-user-languages/js/vendor.js",
+				"github-user-languages/js/content_script.js"
+			],
 			"matches": ["https://github.com/*"]
+		},
+		// arxiv-vanity
+		{
+			"matches": ["*://*.arxiv.org/abs/*"],
+			"js": ["arxiv-vanity/js/inject.js"]
 		}
 	],
 	"web_accessible_resources": [
@@ -101,9 +115,10 @@
 		// shared
 		"storage",
 		"nativeMessaging",
+		"activeTab",
+
 		// arxiv-utils
 		"tabs",
-		"activeTab",
 		"storage",
 		"*://export.arxiv.org/*",
 		"*://arxiv.org/*",
@@ -116,7 +131,9 @@
 		"*://amp.reddit.com/*",
 		"*://i.reddit.com/*",
 		// github-user-languages
-		"https://api.github.com/"
+		"https://api.github.com/",
+		// arxiv-vanity
+		"*://*.arxiv.org/*"
 	],
 	"browser_action": {
 		// "default_popup": "./pages/popup.html",
