@@ -10,17 +10,17 @@
 	"homepage_url": "https://github.com/hyperupcall/webext-hyperupcall",
 	"background": {
 		"scripts": [
-			"./background2.js",
-			// old-reddit-redirect
-			"old-reddit-redirect/js/background.js",
+			// github stuff
+			"js/features/github-repo-size-background.js",
+
+			// arxiv stuff
+			"js/features/arxiv-vanity-background.js",
+			// reddit stuff
+			"js/features/reddit-redirect-background.js",
 			// stackoverflow-poweruser
 			"stackoverflow-poweruser/js/background.js",
-			// github-repo-size
-			"github-repo-size/js/background.js",
 			// github-user-languages
 			"github-user-languages/js/background.js",
-			// arxiv-vanity
-			"arxiv-vanity/js/background.js",
 			// frame-by-frame
 			"frame-by-frame/js/background.js",
 			// pages2repo
@@ -29,7 +29,27 @@
 		]
 	},
 	"content_scripts": [
-		// arxiv-utils
+		// github stuff
+		{
+			"matches": ["https://github.com/*"],
+			"js": ["js/features/github-repo-size.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": [
+				"https://github.com/*",
+				"https://gitlab.com/*",
+				"https://bitbucket.org/*"
+			],
+			"js": ["js/features/github-history-background.js"],
+			"run_at": "document_end"
+		},
+		// arxiv stuff
+		{
+			"matches": ["https://arxiv.org/abs/*"],
+			"js": ["js/features/arxiv-video.js", "js/features/arxiv-vanity.js"],
+			"run_at": "document_end"
+		},
 		{
 			"matches": [
 				"*://arxiv.org/*pdf*",
@@ -40,19 +60,13 @@
 			"js": ["arxiv-utils/js/background.js"],
 			"run_at": "document_end"
 		},
-		// papers-with-video
-		{
-			"matches": ["http://arxiv.org/abs/*", "https://arxiv.org/abs/*"],
-			"js": ["js/extensions/arxiv-video.js"],
-			"run_at": "document_end"
-		},
-		// old-reddit-redirect
+		// reddit stuff
 		{
 			"matches": ["*://old.reddit.com/*"],
-			"css": ["old-reddit-redirect/css/style.css"],
+			"css": ["css/features/reddit-redirect.css"],
 			"run_at": "document_start"
 		},
-		// stackoverflow-poweruser
+		// stackoverflow stuff
 		{
 			"css": [
 				"stackoverflow-poweruser/css/content_style.css",
@@ -82,21 +96,7 @@
 			]
 		},
 		// git-history-browser-extension
-		{
-			"matches": [
-				"https://github.com/*",
-				"https://gitlab.com/*",
-				"https://bitbucket.org/*"
-			],
-			"js": ["git-history/js/background.js"],
-			"run_at": "document_end"
-		},
-		// github-repo-size
-		{
-			"matches": ["https://github.com/*"],
-			"js": ["github-repo-size/js/inject.js"],
-			"run_at": "document_end"
-		},
+
 		// github-user-languages
 		{
 			"js": [
@@ -104,11 +104,6 @@
 				"github-user-languages/js/content_script.js"
 			],
 			"matches": ["https://github.com/*"]
-		},
-		// arxiv-vanity
-		{
-			"matches": ["*://*.arxiv.org/abs/*"],
-			"js": ["arxiv-vanity/js/inject.js"]
 		},
 		// frame-by-frame
 		{

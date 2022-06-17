@@ -156,7 +156,11 @@ const checkForRepoPage = async () => {
 	})
 
 	const list = [...document.querySelectorAll('div[role="row"].Box-row')]
-	const items = [...document.querySelectorAll('div[role="row"].Box-row div[role="rowheader"] a')]
+	const items = [
+		...document.querySelectorAll(
+			'div[role="row"].Box-row div[role="rowheader"] a',
+		),
+	]
 	const ageForReference = document.querySelectorAll(
 		'div[role="row"].Box-row div[role="gridcell"]:last-child',
 	)
@@ -193,8 +197,14 @@ const checkForRepoPage = async () => {
 }
 
 const loadDirSizes = async () => {
-	const files = [...document.querySelectorAll('div[role="row"].Box-row div[role="rowheader"] a')]
-	const dirSizes = [...document.querySelectorAll('div.github-repo-size-dir span')]
+	const files = [
+		...document.querySelectorAll(
+			'div[role="row"].Box-row div[role="rowheader"] a',
+		),
+	]
+	const dirSizes = [
+		...document.querySelectorAll('div.github-repo-size-dir span'),
+	]
 	const navElem = document.getElementById(NAV_ELEM_ID)
 
 	if (navElem) {
@@ -210,10 +220,14 @@ const loadDirSizes = async () => {
 	const repoObj = getRepoObject()
 	if (!repoObj) return
 
-	const data = await getAPIData(`${repoObj.repo}/git/trees/${repoObj.ref}?recursive=1`)
+	const data = await getAPIData(
+		`${repoObj.repo}/git/trees/${repoObj.ref}?recursive=1`,
+	)
 
 	if (data.truncated) {
-		console.warn('github-repo-size: Data truncated. Directory size info may be incomplete.')
+		console.warn(
+			'github-repo-size: Data truncated. Directory size info may be incomplete.',
+		)
 	}
 
 	const sizeObj = {}
@@ -237,7 +251,9 @@ const loadDirSizes = async () => {
 		const dirname = getFileName(file.text)
 		const t = sizeObj[dirname]
 
-		const dir = dirSizes.find((dir) => dir.parentElement.getAttribute('data-dirname') === dirname)
+		const dir = dirSizes.find(
+			(dir) => dir.parentElement.getAttribute('data-dirname') === dirname,
+		)
 
 		if (dir) {
 			dir.textContent = getHumanReadableSize(t)

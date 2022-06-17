@@ -11,7 +11,9 @@ function setGithubToken(key, cb) {
 	obj[GITHUB_TOKEN_KEY] = key
 
 	storage.set(obj, function () {
-		alert('Your Github token has been set successfully. Reload the Github page to see changes.')
+		alert(
+			'Your Github token has been set successfully. Reload the Github page to see changes.',
+		)
 
 		cb()
 	})
@@ -22,7 +24,11 @@ function handleOldGithubToken(cb) {
 		const oldGithubToken = storedData[GITHUB_TOKEN_KEY]
 
 		if (oldGithubToken) {
-			if (confirm('You have already set your Github token. Do you want to remove it?')) {
+			if (
+				confirm(
+					'You have already set your Github token. Do you want to remove it?',
+				)
+			) {
 				storage.remove(GITHUB_TOKEN_KEY, function () {
 					alert(
 						'You have successfully removed Github token. Click extension icon again to set a new token.',

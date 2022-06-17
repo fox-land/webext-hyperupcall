@@ -2,7 +2,9 @@ let oldUrl = ''
 switch (location.hostname) {
 	case 'github.com':
 		this.isButtonInsertedGithub(document.URL)
-		document.addEventListener('pjax:end', () => isButtonInsertedGithub(document.URL))
+		document.addEventListener('pjax:end', () =>
+			isButtonInsertedGithub(document.URL),
+		)
 		break
 	case 'bitbucket.org':
 		// TODO: search event listener similar to github.
@@ -72,7 +74,9 @@ function isButtonInsertedBitbucket(url) {
 		}
 
 		try {
-			document.getElementsByClassName('css-1dgu707 e1fwoj8y0')[0].appendChild(buttonWrapper)
+			document
+				.getElementsByClassName('css-1dgu707 e1fwoj8y0')[0]
+				.appendChild(buttonWrapper)
 			return true
 		} catch (error) {
 			console.log(error)
@@ -84,7 +88,11 @@ function isButtonInsertedBitbucket(url) {
 }
 
 function isButtonInsertedGitlab(url) {
-	if (/https:\/\/gitlab\.com\/[a-zA-Z0-9-_\.]*\/[a-zA-Z0-9-_\.]*\/-\/blob\/.*/.test(url)) {
+	if (
+		/https:\/\/gitlab\.com\/[a-zA-Z0-9-_\.]*\/[a-zA-Z0-9-_\.]*\/-\/blob\/.*/.test(
+			url,
+		)
+	) {
 		const auxUrl = url.split('/')
 		auxUrl[2] = 'gitlab.githistory.xyz'
 		url = auxUrl.join('/')
@@ -93,7 +101,9 @@ function isButtonInsertedGitlab(url) {
 		buttonGitHistory.setAttribute('class', 'btn btn-default btn-sm')
 		buttonGitHistory.setAttribute('href', url.replace('/-/', '/'))
 		try {
-			document.getElementsByClassName('file-actions')[0].childNodes[3].appendChild(buttonGitHistory)
+			document
+				.getElementsByClassName('file-actions')[0]
+				.childNodes[3].appendChild(buttonGitHistory)
 			return true
 		} catch (error) {
 			return false
@@ -104,7 +114,11 @@ function isButtonInsertedGitlab(url) {
 }
 
 function isButtonInsertedGithub(url) {
-	if (/https:\/\/github\.com\/[a-zA-Z0-9-_\.]*\/[a-zA-Z0-9-_\.]*\/blob\/.*/.test(url)) {
+	if (
+		/https:\/\/github\.com\/[a-zA-Z0-9-_\.]*\/[a-zA-Z0-9-_\.]*\/blob\/.*/.test(
+			url,
+		)
+	) {
 		const auxUrl = url.split('/')
 		auxUrl[2] = 'github.githistory.xyz'
 		url = auxUrl.join('/')
@@ -113,7 +127,9 @@ function isButtonInsertedGithub(url) {
 		buttonGithubHistory.setAttribute('class', 'btn btn-sm BtnGroup-item')
 		buttonGithubHistory.setAttribute('href', url)
 		try {
-			document.getElementById('raw-url').parentNode.appendChild(buttonGithubHistory)
+			document
+				.getElementById('raw-url')
+				.parentNode.appendChild(buttonGithubHistory)
 			return true
 		} catch (error) {
 			return false
