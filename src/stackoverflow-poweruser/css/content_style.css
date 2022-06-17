@@ -1,0 +1,11 @@
+.votesPercent {
+    text-align:center;
+    margin-top:8px;
+
+    font-family: Arial;
+    font-size: 19px;
+}
+
+.votesPercent .percentSymbol {
+    font-size: 90%;
+}

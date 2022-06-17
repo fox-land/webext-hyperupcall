@@ -1,5 +1,5 @@
-// import browser from 'webextension-polyfill'
-console.log('starting')
+console.log('Background 1')
+
 var port = chrome.runtime.connectNative('ping_pong')
 
 /*

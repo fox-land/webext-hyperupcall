@@ -1,0 +1,144 @@
+.social {
+    /*width: 200px; reAddForDetails*/
+    width: 70px;
+    height: 220px;
+    position: fixed;
+    top: 50%;
+    margin-top: -110px;
+    perspective: 1000px;
+    opacity: 0.97;
+
+    /* Override SO css sheets */
+    list-style-type: none !important;
+    margin-left: 0 !important;
+    box-sizing: content-box !important;
+    z-index: 1000;
+}
+
+.social li a {
+    display: inline-block;
+    height: 20px;
+    width: 40px;
+    background: rgb(100,100,100);
+    border-bottom: 1px solid #555;
+    font: normal normal normal
+    16px/20px
+    'Source Sans Pro', Helvetica, Arial, sans-serif;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+    transition: background .5s ease .300ms
+}
+
+.social li a.upvotedAnswer {
+    background: #FF8040;
+}
+
+#nbAnswers.upvotedAnswer {
+    color: #FF8040 !important;
+    transition: color .5s ease .300ms
+}
+
+#upvoteQuestionButton {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.social li a:hover { background: #3b5998 }
+/*.social li:nth-child(2) a:hover { background: #00acee }*/
+/*.social li:nth-child(3) a:hover { background: #ea4c89 }*/
+/*.social li:nth-child(4) a:hover { background: #dd4b39 }*/
+
+.social li:first-child a { border-radius: 0 5px 0 0 }
+.social li:last-child a { border-radius: 0 0 5px 0 }
+
+.social li a span {
+    font-weight: normal;
+    font-size: 13px;
+    width: 200px;
+    float: left;
+    text-align: left;
+    background: rgb(60,60,60);
+    color: #fff;
+    margin: -50px 74px;
+    padding: 8px;
+    transform-origin: 0;
+    visibility: hidden;
+    opacity: 0;
+    transform: rotateY(45deg);
+    border-radius: 5px;
+    transition: all .5s ease .1s
+}
+
+.social li span:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: -20px;
+    top: 23px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid rgb(50,50,50);
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid transparent;
+}
+
+.social li a:hover span {
+    visibility: visible;
+    opacity: 1;
+    transform: rotateY(0)
+}
+
+
+
+#nbAnswers {
+    background: rgb(60,60,60);
+    font-weight: bold;
+    /*cursor: default;*/
+    height:40px;
+}
+
+
+/*region Arrows*/
+
+/*NOTE : CSS for arrows is a bit tricky. I couldn't find a cleaner way to do it.
+It has the known bug that if you zoom in the SO page (using ctrl/cmd + +) they will be misplaced*/
+
+.arrow {
+    width:4px !important;
+    display:inline !important;
+    /*font: normal normal normal 15px/14px 'FontAwesome', 'Source Sans Pro', Helvetica, Arial, sans-serif !important;*/
+    font-size:15.8px !important;
+    padding: 7px !important;
+}
+
+.arrow:first-child {
+    border-radius: 0 0px 0 0 !important;
+    border-right: 0.5px solid #555;
+}
+
+.arrow:last-child {
+    margin-left: -4px !important;
+}
+
+.arrow:last-child div {
+    display: inline-block;
+    -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+/*endregion*/
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}

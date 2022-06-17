@@ -1,12 +1,19 @@
 {
 	"name": "hyperupcall",
 	"description": "hyperupcall's Browser Extension",
-	"version": "1.0",
+	"version": "0.1.0",
 	"manifest_version": 2,
+	"author": "Edwin Kofler",
+	"homepage_url": "https://github.com/hyperupcall/webext-hyperupcall",
 	"background": {
-		"scripts": ["./background2.js"]
+		"scripts": [
+			"./background2.js",
+			"old-reddit-redirect/js/background.js",
+			"stackoverflow-poweruser/js/background.js"
+		]
 	},
 	"content_scripts": [
+		// arxiv-utils
 		{
 			"matches": [
 				"*://arxiv.org/*pdf*",
@@ -14,21 +21,84 @@
 				"*://export.arxiv.org/*pdf*",
 				"*://export.arxiv.org/abs/*"
 			],
-			"js": ["content_arxiv_utils.js"],
+			"js": ["arxiv-utils/js/background.js"],
+			"run_at": "document_end"
+		},
+		// papers-with-video
+		{
+			"matches": ["https://arxiv.org/abs/*", "http://arxiv.org/abs/*"],
+			"js": ["arxiv-papers-with-video/js/background.js"],
+			"run_at": "document_end"
+		},
+		// old-reddit-redirect
+		{
+			"matches": ["*://old.reddit.com/*"],
+			"css": ["old-reddit-redirect/css/style.css"],
+			"run_at": "document_start"
+		},
+		// stackoverflow-poweruser
+		{
+			"css": [
+				"stackoverflow-poweruser/css/content_style.css",
+				"stackoverflow-poweruser/css/floating_sidebar.css"
+			],
+			"js": [
+				"stackoverflow-poweruser/js/main.js",
+				"stackoverflow-poweruser/js/helper.js",
+				"stackoverflow-poweruser/js/features/better_answer.js",
+				"stackoverflow-poweruser/js/features/expand_votes_counts.js",
+				"stackoverflow-poweruser/js/features/floating_sidebar.js",
+				"stackoverflow-poweruser/js/features/hiding_content.js",
+				"stackoverflow-poweruser/js/features/misc_features.js",
+				"stackoverflow-poweruser/js/features/no_answer.js",
+				"stackoverflow-poweruser/js/features/navigate_through_answers.js"
+			],
+			"matches": [
+				"https://*.stackoverflow.com/questions/*/*",
+				"https://*.superuser.com/questions/*/*",
+				"https://*.stackexchange.com/questions/*/*",
+				"https://*.stackapps.com/*/*",
+				"https://*.askubuntu.com/*/*",
+				"https://*.serverfault.com/*/*",
+				"https://*.mathoverflow.net/*/*",
+				"https://*.meta.stackoverflow.com/*/*",
+				"https://*.meta.stackexchange.com/*/*"
+			]
+		},
+		// git-history-browser-extension
+		{
+			"matches": ["https://github.com/*", "https://gitlab.com/*", "https://bitbucket.org/*"],
+			"js": ["git-history/js/background.js"],
 			"run_at": "document_end"
 		}
 	],
+	"web_accessible_resources": [
+		// papers-with-video
+		"data/mapping.json",
+		// stackoverflow power user
+		"images/icons/*"
+	],
 	"permissions": [
+		// shared
 		"storage",
 		"nativeMessaging",
+		// arxiv-utils
 		"tabs",
 		"activeTab",
 		"storage",
 		"*://export.arxiv.org/*",
-		"*://arxiv.org/*"
+		"*://arxiv.org/*",
+		// old-reddit redirect
+		"webRequest",
+		"webRequestBlocking",
+		"*://reddit.com/*",
+		"*://www.reddit.com/*",
+		"*://np.reddit.com/*",
+		"*://amp.reddit.com/*",
+		"*://i.reddit.com/*"
 	],
 	"browser_action": {
-		"default_popup": "./popup.html",
+		"default_popup": "./pages/popup.html",
 		"default_icon": {
 			"16": "./images/redpanda-16.png",
 			"32": "./images/redpanda-32.png",
@@ -42,5 +112,6 @@
 		"48": "./images/redpanda-48.png",
 		"128": "./images/redpanda-128.png"
 	},
-	"options_page": "options.html"
+	// "options_page": "arxiv-utils/pages/options.html"
+	"options_page": "stackoverflow-poweruser/pages/options.html"
 }
