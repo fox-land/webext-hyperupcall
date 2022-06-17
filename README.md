@@ -14,4 +14,6 @@ Many of my extensions seldom required updates. They were also cluttering up the 
 - [git-history-browser-extension](https://github.com/LuisReinoso/git-history-browser-extension) by LuisReinoso (MIT)
 - [github-repo-size](https://github.com/harshjv/github-repo-size) by harshjv (MIT)
 - [github-user-languages](https://github.com/freyamade/github-user-languages) by freyamade (MIT)
+- [git-history-browser-extension](https://github.com/LuisReinoso/git-history-browser-extension) by LuisReinoso (MIT)
 - [arxiv-vanity-chrome-extension](https://github.com/arxiv-vanity/arxiv-vanity-chrome-extension) by arxiv-vanity (?)
+- [Pages2Repo](https://github.com/Frozenfire92/Pages2Repo) by Frozenfire92 (UNLICENSE)

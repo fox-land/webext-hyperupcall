@@ -1,0 +1,92 @@
+{
+    "appearance": {
+        "message": "Внешний вид"
+    },
+    "areYouSureYouWantToExportTheData": {
+        "message": "Вы действительно хотите экспортировать данные?"
+    },
+    "areYouSureYouWantToImportTheData": {
+        "message": "Вы действительно хотите испортировать данные?"
+    },
+    "backgroundColor": {
+        "message": "Цвет фона"
+    },
+    "black": {
+        "message": "Черная"
+    },
+    "blur": {
+        "message": "Размытие"
+    },
+    "cancel": {
+        "message": "Отмена"
+    },
+    "decreaseFramerate": {
+        "message": "Decrease framerate"
+    },
+    "default": {
+        "message": "Default"
+    },
+    "description": {
+        "message": "Лучшее Frame By Frame расширение. Работает со всеми веб-сайтами! Наведите курсор на видео, затем используйте клавиатуру, чтобы выбрать нужный кадр."
+    },
+    "duration": {
+        "message": "Продолжительность"
+    },
+    "export": {
+        "message": "Экспорт"
+    },
+    "frame": {
+        "message": "Кадр"
+    },
+    "hideInFullscreen": {
+        "message": "Скрыть в полном экране"
+    },
+    "hidePanel": {
+        "message": "Скрыть панель"
+    },
+    "import": {
+        "message": "Импортировать"
+    },
+    "increaseFramerate": {
+        "message": "Increase framerate"
+    },
+    "language": {
+        "message": "Язык"
+    },
+    "light": {
+        "message": "Светлая"
+    },
+    "nextFrame": {
+        "message": "Следующий кадр"
+    },
+    "ok": {
+        "message": "Ок"
+    },
+    "opacity": {
+        "message": "Прозрачность"
+    },
+    "previousFrame": {
+        "message": "Предыдущий кадр"
+    },
+    "reset": {
+        "message": "Сброс"
+    },
+    "save": {
+        "message": "Сохранить"
+    },
+    "shortcuts": {
+        "message": "Горячие клавиши"
+    },
+    "somethingWentWrongTryReloadingThePage": {
+        "message": "Что-то пошло не так. Попробуйте перезагрузить страницу."
+    },
+    "textColor": {
+        "message": "Цвет текста"
+    },
+    "theme": {
+        "message": "Тема"
+    },
+    "time": {
+        "message": "Время"
+    }
+}

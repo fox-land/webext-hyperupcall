@@ -1,8 +1,11 @@
 {
+	"$schema": "https://json.schemastore.org/webextension.json",
+	// "$schema": "https://json.schemastore.org/chrome-manifest",
 	"name": "hyperupcall",
 	"description": "hyperupcall's Browser Extension",
 	"version": "0.1.0",
 	"manifest_version": 2,
+	"default_locale": "en",
 	"author": "Edwin Kofler",
 	"homepage_url": "https://github.com/hyperupcall/webext-hyperupcall",
 	"background": {
@@ -17,7 +20,12 @@
 			// github-user-languages
 			"github-user-languages/js/background.js",
 			// arxiv-vanity
-			"arxiv-vanity/js/background.js"
+			"arxiv-vanity/js/background.js",
+			// frame-by-frame
+			"frame-by-frame/js/background.js",
+			// pages2repo
+			"pages2repo/js/github.js",
+			"pages2repo/js/background.js"
 		]
 	},
 	"content_scripts": [
@@ -34,8 +42,8 @@
 		},
 		// papers-with-video
 		{
-			"matches": ["https://arxiv.org/abs/*", "http://arxiv.org/abs/*"],
-			"js": ["arxiv-papers-with-video/js/background.js"],
+			"matches": ["http://arxiv.org/abs/*", "https://arxiv.org/abs/*"],
+			"js": ["js/extensions/arxiv-video.js"],
 			"run_at": "document_end"
 		},
 		// old-reddit-redirect
@@ -101,11 +109,22 @@
 		{
 			"matches": ["*://*.arxiv.org/abs/*"],
 			"js": ["arxiv-vanity/js/inject.js"]
+		},
+		// frame-by-frame
+		{
+			"all_frames": true,
+			"css": ["frame-by-frame/css/content-styles.css"],
+			"js": [
+				"frame-by-frame/js/extension-core.js",
+				"frame-by-frame/js/extension-features.js"
+			],
+			"matches": ["<all_urls>"],
+			"run_at": "document_start"
 		}
 	],
 	"web_accessible_resources": [
 		// papers-with-video
-		"data/mapping.json",
+		"data/arxiv-papers-to-video.json",
 		// stackoverflow power user
 		"images/icons/*",
 		// github-user-languages
@@ -133,11 +152,22 @@
 		// github-user-languages
 		"https://api.github.com/",
 		// arxiv-vanity
-		"*://*.arxiv.org/*"
+		"*://*.arxiv.org/*",
+		// pages2repo
+		"storage",
+		"tabs",
+		"clipboardWrite",
+		"https://*.github.io/*",
+		"https://github.com/"
+	],
+	"optional_permissions": [
+		// frame-by-frame
+		"downloads"
 	],
 	"browser_action": {
 		// "default_popup": "./pages/popup.html",
-		"default_popup": "github-user-languages/pages/popup.html",
+		// "default_popup": "github-user-languages/pages/popup.html",
+		"default_popup": "frame-by-frame/pages/popup.html",
 		"default_icon": {
 			"16": "./images/redpanda-16.png",
 			"32": "./images/redpanda-32.png",
@@ -152,5 +182,6 @@
 		"128": "./images/redpanda-128.png"
 	},
 	// "options_page": "arxiv-utils/pages/options.html"
-	"options_page": "stackoverflow-poweruser/pages/options.html"
+	// "options_page": "stackoverflow-poweruser/pages/options.html",
+	"options_page": "pages/options.html"
 }
