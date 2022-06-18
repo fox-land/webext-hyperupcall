@@ -1,5 +1,16 @@
 'use strict'
 
+// TOO: resolve
+chrome.management.getAll((/** @type {ExtensionInfo[]} */ result) => {
+	const el = document.getElementById('extension-list')
+
+	for (const info of result) {
+		const node = document.createElement('li')
+		node.innerText = JSON.stringify(info)
+		el.appendChild(node)
+	}
+})
+
 function p(fn) {
 	return (...args) => {
 		return new Promise((resolve, reject) => {

@@ -41,8 +41,13 @@
 				"https://gitlab.com/*",
 				"https://bitbucket.org/*"
 			],
-			"js": ["js/features/github-history-background.js"],
+			"js": ["js/features/github-history.js"],
 			"run_at": "document_end"
+		},
+		{
+			"css": ["css/features/github-isometric.css"],
+			"js": ["js/deps/obelisk.min.js", "js/features/github-isometric.js"],
+			"matches": ["https://github.com/*"]
 		},
 		// arxiv stuff
 		{
@@ -130,10 +135,11 @@
 		"storage",
 		"nativeMessaging",
 		"activeTab",
+		"management",
+		"contextMenus",
 
 		// arxiv-utils
 		"tabs",
-		"storage",
 		"*://export.arxiv.org/*",
 		"*://arxiv.org/*",
 		// old-reddit redirect
@@ -149,8 +155,6 @@
 		// arxiv-vanity
 		"*://*.arxiv.org/*",
 		// pages2repo
-		"storage",
-		"tabs",
 		"clipboardWrite",
 		"https://*.github.io/*",
 		"https://github.com/"

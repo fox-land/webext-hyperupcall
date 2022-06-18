@@ -17,3 +17,4 @@ Many of my extensions seldom required updates. They were also cluttering up the 
 - [git-history-browser-extension](https://github.com/LuisReinoso/git-history-browser-extension) by LuisReinoso (MIT)
 - [arxiv-vanity-chrome-extension](https://github.com/arxiv-vanity/arxiv-vanity-chrome-extension) by arxiv-vanity (?)
 - [Pages2Repo](https://github.com/Frozenfire92/Pages2Repo) by Frozenfire92 (UNLICENSE)
+- [isometric-contributions](https://github.com/jasonlong/isometric-contributions) by jasonlong (MIT)
