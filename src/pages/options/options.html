@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script defer src="./options.js"></script>
+	<link rel="stylesheet" href="../reset.css">
+	<link rel="stylesheet" href="./options.css">
+	<title>Options</title>
+</head>
+<body>
+	<h1>Options</h1>
+	<h2>Arxiv</h2>
+	<input type="checkbox" id="arxiv-videos">
+	<label for="arxiv-videos">Enable arxiv-videos</label>
+	<p>Creates a video emoji at end of title linking to video</p>
+
+	<input type="checkbox" id="arxiv-vanity">
+	<label for="arxiv-vanity">Enable arxiv-vanity</label>
+	<p>Creates a link to "web on arXiv vanity link under Download section</p>
+
+	<h3>arxiv-utils Settings</h3>
+	<p>Current filename format: <b id="filename-format">${title}, ${firstAuthor} et al., ${publishedYear}.pdf</b></p>
+	<form>
+		 <label>New filename format:</label>
+		 <input type="text" id="new-filename-format" style="margin: 2px; width:500px;" ><br>
+		 <button type="submit">Update</button>
+		 <button id="revert" type="submit">Revert to Default</button><br>
+		 <p>You'll need to re-open the tabs for the new format to take effect.</p>
+	</form>
+
+
+	<h2>GitHub</h2>
+	<input type="checkbox" id="reddit-redirector">
+	<label for="reddit-redirector">Enable reddit-redirecter</label>
+
+	<h2>Reddit</h2>
+
+	<h2>StackOverflow</h2>
+
+	<h2>Current Extensions:</h2>
+	<ul id="extension-list"></ul>
+</body>
+</html>

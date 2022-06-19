@@ -1,0 +1,14 @@
+{
+	"name": "hyperupcall2222222",
+	"description": "hyperu2222222pcall's Browser Extension",
+	"version": "0.1.0",
+	"manifest_version": 2,
+	"default_locale": "en",
+	"content_scripts": [
+		{
+			"matches": ["*://*.com/*"],
+			"js": ["a.ts"],
+			"run_at": "document_start"
+		}
+	]
+}

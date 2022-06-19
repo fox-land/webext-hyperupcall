@@ -10,49 +10,31 @@
 	"homepage_url": "https://github.com/hyperupcall/webext-hyperupcall",
 	"background": {
 		"scripts": [
-			// github stuff
+			// arxiv
+			"js/features/arxiv/background.js",
+
+			// github
 			"js/features/github-repo-size-background.js",
 
-			// arxiv stuff
-			"js/features/arxiv-vanity-background.js",
-			// reddit stuff
-			"js/features/reddit-redirect-background.js",
-			// stackoverflow-poweruser
-			"stackoverflow-poweruser/js/background.js",
+			// reddit
+			"js/features/reddit/background.js",
+			// stackoverflow
+			"modules/stackoverflow-poweruser/js/background.js",
+			// misc
 			// github-user-languages
-			"github-user-languages/js/background.js",
+			"modules/github-user-languages/js/background.js",
 			// frame-by-frame
-			"frame-by-frame/js/background.js",
+			"modules/frame-by-frame/js/background.js",
 			// pages2repo
-			"pages2repo/js/github.js",
-			"pages2repo/js/background.js"
+			"modules/pages2repo/js/github.js",
+			"modules/pages2repo/js/background.js"
 		]
 	},
 	"content_scripts": [
-		// github stuff
-		{
-			"matches": ["https://github.com/*"],
-			"js": ["js/features/github-repo-size.js"],
-			"run_at": "document_end"
-		},
-		{
-			"matches": [
-				"https://github.com/*",
-				"https://gitlab.com/*",
-				"https://bitbucket.org/*"
-			],
-			"js": ["js/features/github-history.js"],
-			"run_at": "document_end"
-		},
-		{
-			"css": ["css/features/github-isometric.css"],
-			"js": ["js/deps/obelisk.min.js", "js/features/github-isometric.js"],
-			"matches": ["https://github.com/*"]
-		},
-		// arxiv stuff
+		// arxiv
 		{
 			"matches": ["https://arxiv.org/abs/*"],
-			"js": ["js/features/arxiv-video.js", "js/features/arxiv-vanity.js"],
+			"js": ["common/common.js", "js/features/arxiv/inject.js"],
 			"run_at": "document_end"
 		},
 		{
@@ -62,32 +44,49 @@
 				"*://export.arxiv.org/*pdf*",
 				"*://export.arxiv.org/abs/*"
 			],
-			"js": ["arxiv-utils/js/background.js"],
+			"js": ["common/common.js", "js/features/arxiv/extra-inject.js"],
 			"run_at": "document_end"
+		},
+		// github stuff
+		{
+			"matches": ["https://github.com/*"],
+			"js": ["common/common.js", "js/features/github-repo-size.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": [
+				"https://github.com/*",
+				"https://gitlab.com/*",
+				"https://bitbucket.org/*"
+			],
+			"js": ["common/common.js", "js/features/github-history.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://github.com/*"],
+			"css": ["css/features/github-isometric.css"],
+			"js": [
+				"common/common.js",
+				"js/deps/obelisk.min.js",
+				"js/features/github-isometric.js"
+			]
+		},
+		{
+			"matches": ["https://github.com/*"],
+			"js": [
+				"common/common.js",
+				"modules/github-user-languages/js/vendor.js",
+				"modules/github-user-languages/js/content_script.js"
+			]
 		},
 		// reddit stuff
 		{
 			"matches": ["*://old.reddit.com/*"],
-			"css": ["css/features/reddit-redirect.css"],
+			"css": ["css/features/reddit/styles.css"],
 			"run_at": "document_start"
 		},
 		// stackoverflow stuff
 		{
-			"css": [
-				"stackoverflow-poweruser/css/content_style.css",
-				"stackoverflow-poweruser/css/floating_sidebar.css"
-			],
-			"js": [
-				"stackoverflow-poweruser/js/main.js",
-				"stackoverflow-poweruser/js/helper.js",
-				"stackoverflow-poweruser/js/features/better_answer.js",
-				"stackoverflow-poweruser/js/features/expand_votes_counts.js",
-				"stackoverflow-poweruser/js/features/floating_sidebar.js",
-				"stackoverflow-poweruser/js/features/hiding_content.js",
-				"stackoverflow-poweruser/js/features/misc_features.js",
-				"stackoverflow-poweruser/js/features/no_answer.js",
-				"stackoverflow-poweruser/js/features/navigate_through_answers.js"
-			],
 			"matches": [
 				"https://*.stackoverflow.com/questions/*/*",
 				"https://*.superuser.com/questions/*/*",
@@ -98,37 +97,43 @@
 				"https://*.mathoverflow.net/*/*",
 				"https://*.meta.stackoverflow.com/*/*",
 				"https://*.meta.stackexchange.com/*/*"
-			]
-		},
-		// git-history-browser-extension
-
-		// github-user-languages
-		{
-			"js": [
-				"github-user-languages/js/vendor.js",
-				"github-user-languages/js/content_script.js"
 			],
-			"matches": ["https://github.com/*"]
+			"css": [
+				"modules/stackoverflow-poweruser/css/content_style.css",
+				"modules/stackoverflow-poweruser/css/floating_sidebar.css"
+			],
+			"js": [
+				"common/common.js",
+				"modules/stackoverflow-poweruser/js/main.js",
+				"modules/stackoverflow-poweruser/js/helper.js",
+				"modules/stackoverflow-poweruser/js/features/better_answer.js",
+				"modules/stackoverflow-poweruser/js/features/expand_votes_counts.js",
+				"modules/stackoverflow-poweruser/js/features/floating_sidebar.js",
+				"modules/stackoverflow-poweruser/js/features/hiding_content.js",
+				"modules/stackoverflow-poweruser/js/features/misc_features.js",
+				"modules/stackoverflow-poweruser/js/features/no_answer.js",
+				"modules/stackoverflow-poweruser/js/features/navigate_through_answers.js"
+			]
 		},
 		// frame-by-frame
 		{
 			"all_frames": true,
-			"css": ["frame-by-frame/css/content-styles.css"],
+			"css": ["modules/frame-by-frame/css/content-styles.css"],
 			"js": [
-				"frame-by-frame/js/extension-core.js",
-				"frame-by-frame/js/extension-features.js"
+				"common/common.js",
+				"modules/frame-by-frame/js/extension-core.js",
+				"modules/frame-by-frame/js/extension-features.js"
 			],
 			"matches": ["<all_urls>"],
 			"run_at": "document_start"
 		}
 	],
 	"web_accessible_resources": [
-		// papers-with-video
 		"data/arxiv-papers-to-video.json",
 		// stackoverflow power user
 		"images/icons/*",
 		// github-user-languages
-		"github/user-languages/data/colors.json"
+		"modules/github/user-languages/data/colors.json"
 	],
 	"permissions": [
 		// shared
@@ -137,36 +142,31 @@
 		"activeTab",
 		"management",
 		"contextMenus",
+		"clipboardWrite", // pages2repo
+		"downloads",
 
 		// arxiv-utils
 		"tabs",
 		"*://export.arxiv.org/*",
 		"*://arxiv.org/*",
-		// old-reddit redirect
+		"*://*.arxiv.org/*",
+
+		// GitHub
+		"https://api.github.com/",
+		"https://*.github.io/*",
+		"https://github.com/",
+
+		// Reddit
 		"webRequest",
 		"webRequestBlocking",
 		"*://reddit.com/*",
 		"*://www.reddit.com/*",
 		"*://np.reddit.com/*",
 		"*://amp.reddit.com/*",
-		"*://i.reddit.com/*",
-		// github-user-languages
-		"https://api.github.com/",
-		// arxiv-vanity
-		"*://*.arxiv.org/*",
-		// pages2repo
-		"clipboardWrite",
-		"https://*.github.io/*",
-		"https://github.com/"
-	],
-	"optional_permissions": [
-		// frame-by-frame
-		"downloads"
+		"*://i.reddit.com/*"
 	],
 	"browser_action": {
-		// "default_popup": "./pages/popup.html",
-		// "default_popup": "github-user-languages/pages/popup.html",
-		"default_popup": "frame-by-frame/pages/popup.html",
+		"default_popup": "pages/popup/popup.html",
 		"default_icon": {
 			"16": "./images/redpanda-16.png",
 			"32": "./images/redpanda-32.png",
@@ -180,7 +180,5 @@
 		"48": "./images/redpanda-48.png",
 		"128": "./images/redpanda-128.png"
 	},
-	// "options_page": "arxiv-utils/pages/options.html"
-	// "options_page": "stackoverflow-poweruser/pages/options.html",
-	"options_page": "pages/options.html"
+	"options_page": "pages/options/options.html"
 }

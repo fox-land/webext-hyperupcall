@@ -18,3 +18,9 @@ Many of my extensions seldom required updates. They were also cluttering up the 
 - [arxiv-vanity-chrome-extension](https://github.com/arxiv-vanity/arxiv-vanity-chrome-extension) by arxiv-vanity (?)
 - [Pages2Repo](https://github.com/Frozenfire92/Pages2Repo) by Frozenfire92 (UNLICENSE)
 - [isometric-contributions](https://github.com/jasonlong/isometric-contributions) by jasonlong (MIT)
+- [github-issue-link-status](https://github.com/fregante/github-issue-link-status) by fregante (MIT)
+
+# TODO
+
+- github-issue-link-status
+- github-file-icons
