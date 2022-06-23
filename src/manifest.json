@@ -23,8 +23,6 @@
 			// misc
 			// github-user-languages
 			"modules/github-user-languages/js/background.js",
-			// frame-by-frame
-			"modules/frame-by-frame/js/background.js",
 			// pages2repo
 			"modules/pages2repo/js/github.js",
 			"modules/pages2repo/js/background.js"
@@ -114,18 +112,6 @@
 				"modules/stackoverflow-poweruser/js/features/no_answer.js",
 				"modules/stackoverflow-poweruser/js/features/navigate_through_answers.js"
 			]
-		},
-		// frame-by-frame
-		{
-			"all_frames": true,
-			"css": ["modules/frame-by-frame/css/content-styles.css"],
-			"js": [
-				"common/common.js",
-				"modules/frame-by-frame/js/extension-core.js",
-				"modules/frame-by-frame/js/extension-features.js"
-			],
-			"matches": ["<all_urls>"],
-			"run_at": "document_start"
 		}
 	],
 	"web_accessible_resources": [
