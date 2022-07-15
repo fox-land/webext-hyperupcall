@@ -20,9 +20,6 @@
 			"js/features/reddit/background.js",
 			// stackoverflow
 			"modules/stackoverflow-poweruser/js/background.js",
-			// misc
-			// github-user-languages
-			"modules/github-user-languages/js/background.js",
 			// pages2repo
 			"modules/pages2repo/js/github.js",
 			"modules/pages2repo/js/background.js"
@@ -71,10 +68,15 @@
 		},
 		{
 			"matches": ["https://github.com/*"],
+			"js": ["js/features/github-issue-link-status.js"],
+			"css": ["css/features/github-issue-link-status.css"]
+		},
+		{
+			"matches": ["https://github.com/*"],
 			"js": [
 				"common/common.js",
-				"modules/github-user-languages/js/vendor.js",
-				"modules/github-user-languages/js/content_script.js"
+				"js/deps/chartjs-3.4.js",
+				"js/features/github-user-languages.js"
 			]
 		},
 		// reddit stuff
@@ -119,7 +121,7 @@
 		// stackoverflow power user
 		"images/icons/*",
 		// github-user-languages
-		"modules/github/user-languages/data/colors.json"
+		"data/github-user-languages.json"
 	],
 	"permissions": [
 		// shared

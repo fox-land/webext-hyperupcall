@@ -1,0 +1,38 @@
+:root {
+	--github-red: #cb2431;
+	min-width: 410px;
+}
+
+p {
+	margin-top: 0;
+}
+
+input[type='text'] {
+	font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier,
+		monospace;
+	font-size: 1.4em;
+	line-height: 1.5;
+	width: 20em !important; /* https://github.com/sindresorhus/refined-github/issues/1374#issuecomment-397906701 */
+}
+
+input[type='text']:invalid {
+	color: var(--github-red) !important;
+	border: 1px solid;
+}
+body {
+	width: 400px;
+}
+body,
+input[type='text'] {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+}
+input[type='text'] {
+	width: 90%;
+}
+input[type='checkbox'] {
+	vertical-align: middle;
+}
+footer {
+	text-align: right;
+}

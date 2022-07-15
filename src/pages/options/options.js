@@ -72,3 +72,70 @@ function restoreOptions() {
 
 document.addEventListener('DOMContentLoaded', restoreOptions)
 document.querySelector('form').addEventListener('submit', saveOptions)
+
+function debug(/** @type {string} */ msg) {
+	console.log(`DEBUG: ${msg}`)
+}
+
+// github-user-languages
+;(() => {
+	async function getUsernameFromToken(token) {
+		if (!token) {
+			return null
+		}
+
+		let username = null
+		try {
+			const res = await fetch('https://api.github.com/user', {
+				headers: { Authorization: `token ${token}` },
+			})
+			if (res.ok) {
+				const data = await res.json()
+				username = data.login
+			}
+		} catch (err) {
+			// TODO
+		}
+
+		debug(`getUsernameFromToken: ${username}`)
+		return username
+	}
+
+	chrome.storage.sync.get(
+		['showLegend', 'personalAccessToken', 'personalAccessTokenOwner'],
+		(result) => {
+			// Show Legend
+			const chartLegendCheckEl = document.getElementById('show-legend')
+			const showLegend = result.showLegend || false
+			chartLegendCheckEl.checked = showLegend
+			chartLegendCheckEl.addEventListener(
+				'click',
+				() => {
+					chrome.storage.sync.set({ showLegend: chartLegendCheckEl.checked })
+				},
+				false,
+			)
+			chartLegendCheckEl.disabled = false
+
+			// GitHub Token
+			const personalTokenInputEl = document.getElementById(
+				'personal-access-token',
+			)
+			const personalAccessToken = result.personalAccessToken || ''
+			personalTokenInputEl.value = personalAccessToken
+			personalTokenInputEl.addEventListener(
+				'change',
+				async () => {
+					const storedData = {
+						personalAccessToken: personalTokenInputEl.value,
+						personalAccessTokenOwner: await getUsernameFromToken(token),
+					}
+					debug('setting data', storedData)
+					chrome.storage.sync.set(storedData)
+				},
+				false,
+			)
+			personalTokenInputEl.disabled = false
+		},
+	)
+})()

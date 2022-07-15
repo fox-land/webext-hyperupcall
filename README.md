@@ -24,3 +24,6 @@ Many of my extensions seldom required updates. They were also cluttering up the 
 
 - github-issue-link-status
 - github-file-icons
+
+- 'webext-dynamic-content-scripts'
+- 'webext-domain-permission-toggle'

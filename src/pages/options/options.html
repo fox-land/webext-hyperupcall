@@ -1,45 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script defer src="./options.js"></script>
-	<link rel="stylesheet" href="../reset.css">
-	<link rel="stylesheet" href="./options.css">
-	<title>Options</title>
-</head>
-<body>
-	<h1>Options</h1>
-	<h2>Arxiv</h2>
-	<input type="checkbox" id="arxiv-videos">
-	<label for="arxiv-videos">Enable arxiv-videos</label>
-	<p>Creates a video emoji at end of title linking to video</p>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script defer src="./options.js"></script>
+		<link rel="stylesheet" href="../reset.css" />
+		<link rel="stylesheet" href="./options.css" />
+		<title>Options</title>
+	</head>
+	<body>
+		<section>
+			<h1>Meta Options</h1>
+			<h4>API Token</h4>
+			<a
+				href="https://github.com/settings/tokens/new?description=webext-hyperupcall&scopes=repo"
+				target="_blank"
+				>Generate Token</a
+			>
+			<br />
+			<label for="personal-access-token">Token</label>
+			<input type="text" id="personal-access-token" disabled />
+		</section>
 
-	<input type="checkbox" id="arxiv-vanity">
-	<label for="arxiv-vanity">Enable arxiv-vanity</label>
-	<p>Creates a link to "web on arXiv vanity link under Download section</p>
+		<section>
+			<h1>Github User Languages Options</h1>
+			<h4>Chart Settings</h4>
+			<input type="checkbox" id="show-legend" disabled />
+			<label for="show-legend"><span>Show Legend</span></label>
+		</section>
 
-	<h3>arxiv-utils Settings</h3>
-	<p>Current filename format: <b id="filename-format">${title}, ${firstAuthor} et al., ${publishedYear}.pdf</b></p>
-	<form>
-		 <label>New filename format:</label>
-		 <input type="text" id="new-filename-format" style="margin: 2px; width:500px;" ><br>
-		 <button type="submit">Update</button>
-		 <button id="revert" type="submit">Revert to Default</button><br>
-		 <p>You'll need to re-open the tabs for the new format to take effect.</p>
-	</form>
+		<section>
+			<h1>Github Issue Link Options</h1>
+			<form id="options-form" class="detail-view-container">
+				<p>
+					<label for="token"><strong>Personal token</strong></label> <br />
+					Required to make a GitHub v4 API call.
+					<a
+						href="https://github.com/settings/tokens/new?scopes=repo&description=GitHub%20Issue%20Link%20Status"
+						target="_blank"
+						>Generate one</a
+					>
+					and add it here.<br />
+					This will only be stored locally (and in the browser's sync, if
+					enabled).
+				</p>
 
+				<p>
+					<input
+						type="text"
+						id="token"
+						name="token"
+						spellcheck="false"
+						autocomplete="off"
+						pattern="[\da-f]{40}|ghp_\w{36,251}"
+						required
+					/>
+				</p>
+			</form>
+		</section>
 
-	<h2>GitHub</h2>
-	<input type="checkbox" id="reddit-redirector">
-	<label for="reddit-redirector">Enable reddit-redirecter</label>
+		<h2>Arxiv</h2>
+		<input type="checkbox" id="arxiv-videos" />
+		<label for="arxiv-videos">Enable arxiv-videos</label>
+		<p>Creates a video emoji at end of title linking to video</p>
 
-	<h2>Reddit</h2>
+		<input type="checkbox" id="arxiv-vanity" />
+		<label for="arxiv-vanity">Enable arxiv-vanity</label>
+		<p>Creates a link to "web on arXiv vanity link under Download section</p>
 
-	<h2>StackOverflow</h2>
+		<h3>arxiv-utils Settings</h3>
+		<p>
+			Current filename format:
+			<b id="filename-format"
+				>${title}, ${firstAuthor} et al., ${publishedYear}.pdf</b
+			>
+		</p>
+		<form>
+			<label>New filename format:</label>
+			<input
+				type="text"
+				id="new-filename-format"
+				style="margin: 2px; width: 500px"
+			/><br />
+			<button type="submit">Update</button>
+			<button id="revert" type="submit">Revert to Default</button><br />
+			<p>You'll need to re-open the tabs for the new format to take effect.</p>
+		</form>
 
-	<h2>Current Extensions:</h2>
-	<ul id="extension-list"></ul>
-</body>
+		<h2>GitHub</h2>
+		<input type="checkbox" id="reddit-redirector" />
+		<label for="reddit-redirector">Enable reddit-redirecter</label>
+
+		<h2>Reddit</h2>
+
+		<h2>StackOverflow</h2>
+
+		<h2>Current Extensions:</h2>
+		<ul id="extension-list"></ul>
+	</body>
 </html>
