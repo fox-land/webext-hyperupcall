@@ -1,6 +1,6 @@
 {
 	"name": "webext-hyperupcall",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "hyperupcall's Extension",
 	"license": "Multiple",
 	"repository": "https://github.com/hyperupcall/webext-hyperupcall",
@@ -10,12 +10,12 @@
 		"url": "https://edwinkofler.com"
 	},
 	"dependencies": {
-		"webextension-polyfill": "^0.4.0"
+		"webextension-polyfill": "^0.10.0"
 	},
 	"devDependencies": {
-		"@parcel/config-webextension": "^2.6.1",
-		"@parcel/core": "^2.6.1",
-		"parcel": "^2.6.1",
-		"stylelint": "^14.8.5"
+		"@parcel/config-webextension": "^2.8.2",
+		"@parcel/core": "^2.8.2",
+		"parcel": "^2.8.2",
+		"stylelint": "^14.16.0"
 	}
 }

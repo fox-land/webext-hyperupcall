@@ -1,8 +1,0 @@
-{
-	"name": "ping_pong",
-	"description": "Example host for native messaging",
-	"path": "/storage/ur/storage_home/Docs/Programming/repos/webext-hyperupcall/__app/ping_pong.py",
-	"type": "stdio",
-	"allowed_origins": ["chrome-extension://ibjmphpchbpioijadmfphcpgdbdhdchi/"]
-	// "allowed_extensions": ["ping_pong@example.org"]
-}
