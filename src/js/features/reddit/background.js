@@ -1,13 +1,7 @@
 chrome.webRequest.onBeforeRequest.addListener(
 	(details) => {
 		const oldReddit = 'https://old.reddit.com'
-		const excludedPaths = [
-			'/poll',
-			'/rpan',
-			'/settings',
-			'/topics',
-			'/community-points',
-		]
+		const excludedPaths = ['/poll', '/rpan', '/settings', '/topics', '/community-points']
 
 		const url = new URL(details.url)
 

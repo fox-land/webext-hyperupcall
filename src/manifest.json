@@ -11,12 +11,8 @@
 		"scripts": [
 			"js/features/arxiv/background.js",
 
-			"js/features/github-repo-size-background.js",
-
 			"js/features/reddit/background.js",
-			"modules/stackoverflow-poweruser/js/background.js",
-			"modules/pages2repo/js/github.js",
-			"modules/pages2repo/js/background.js"
+			"modules/stackoverflow-poweruser/js/background.js"
 		]
 	},
 	"content_scripts": [
@@ -34,42 +30,6 @@
 			],
 			"js": ["common/common.js", "js/features/arxiv/extra-inject.js"],
 			"run_at": "document_end"
-		},
-		{
-			"matches": ["https://github.com/*"],
-			"js": ["common/common.js", "js/features/github-repo-size.js"],
-			"run_at": "document_end"
-		},
-		{
-			"matches": [
-				"https://github.com/*",
-				"https://gitlab.com/*",
-				"https://bitbucket.org/*"
-			],
-			"js": ["common/common.js", "js/features/github-history.js"],
-			"run_at": "document_end"
-		},
-		{
-			"matches": ["https://github.com/*"],
-			"css": ["css/features/github-isometric.css"],
-			"js": [
-				"common/common.js",
-				"js/deps/obelisk.min.js",
-				"js/features/github-isometric.js"
-			]
-		},
-		{
-			"matches": ["https://github.com/*"],
-			"js": ["js/features/github-issue-link-status.js"],
-			"css": ["css/features/github-issue-link-status.css"]
-		},
-		{
-			"matches": ["https://github.com/*"],
-			"js": [
-				"common/common.js",
-				"js/deps/chartjs-3.4.js",
-				"js/features/github-user-languages.js"
-			]
 		},
 		{
 			"matches": ["*://old.reddit.com/*"],
